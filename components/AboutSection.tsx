@@ -1,5 +1,5 @@
 import React from 'react';
-import { CONTENT } from '../constants';
+import { CONTENT } from '../constants.ts';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -28,10 +28,6 @@ export const AboutSection: React.FC = () => {
                 );
               })}
             </div>
-            <div className="mt-8 pt-8 border-t border-gray-200">
-              <p className="font-bold text-brand-dark text-lg">Der Gründer</p>
-              <p className="text-slate-600 font-medium">{CONTENT.about.author}</p>
-            </div>
           </div>
 
           {/* Image */}
@@ -45,10 +41,6 @@ export const AboutSection: React.FC = () => {
                   alt="Vater und Kind" 
                   className="relative rounded-xl shadow-2xl w-full h-96 object-cover grayscale"
                 />
-                {/* Name Overlay matching the screenshot design */}
-                <div className="absolute bottom-0 left-0 right-0 bg-slate-900/90 p-4 rounded-b-xl backdrop-blur-sm">
-                    <p className="text-white font-bold text-sm tracking-wide">{CONTENT.about.author}</p>
-                </div>
               </div>
             </div>
           </div>
