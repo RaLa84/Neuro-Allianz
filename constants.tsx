@@ -65,8 +65,7 @@ export const CONTENT = {
       "Als mein Sohn die Diagnose Autismus erhielt, dachte ich, wir bekommen Hilfe. Stattdessen bekamen wir Papierkram, Ablehnung und das Gefühl, dass unser Kind im Bildungssystem von MV \"stört\".",
       "Ich habe Stunden in Wartezimmern verbracht und Nächte damit, Widersprüche gegen Behördenentscheidungen zu schreiben. Ich sah, wie mein intelligenter, fröhlicher Junge seine Lebensfreude verlor, weil er nicht in das starre Raster passte.",
       "**Damit ist jetzt Schluss.** Ich habe die Neuro-Allianz gegründet, weil ich weiß, dass wir viele sind. Tausende Familien in Mecklenburg-Vorpommern erleben dasselbe. Wenn wir uns vernetzen, können sie uns nicht länger ignorieren.",
-      "**Wir verwandeln unsere Erschöpfung in politische Schlagkraft.**",
-      "Raik Lasner, Gründer der Initiative"
+      "**Wir verwandeln unsere Erschöpfung in politische Schlagkraft.**"
     ],
     author: "Raik Lasner, Initiator",
     image: "https://picsum.photos/600/800?grayscale"
