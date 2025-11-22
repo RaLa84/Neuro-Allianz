@@ -1,10 +1,18 @@
 <!DOCTYPE html>
-<html lang="de">
-  <head>
+<html lang="de" class="scroll-smooth">
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Neuro-Allianz Mecklenburg-Vorpommern</title>
     <meta name="description" content="Für ein inklusives Bildungssystem in MV. Wir vernetzen Eltern und fordern politische Veränderung." />
+    
+    <!-- Schriftarten laden -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons laden (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS laden (Design-Framework) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -25,23 +33,418 @@
         }
       }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
       body { font-family: 'Inter', sans-serif; }
-      .scroll-smooth { scroll-behavior: smooth; }
+      /* Verhindert das Flackern beim Laden der Icons */
+      .lucide { vertical-align: middle; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0"
-  }
-}
-</script>
 </head>
-  <body class="bg-brand-light text-brand-dark antialiased scroll-smooth">
-    <div id="root"></div>
-  </body>
+<body class="bg-brand-light text-brand-dark antialiased">
+
+    <!-- NAVIGATION -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <div class="p-1 text-amber-400 nav-text-target transition-colors">
+                        <i data-lucide="brain-circuit" width="32" height="32"></i>
+                    </div>
+                    <span class="font-bold text-2xl tracking-tight nav-text-target text-white transition-colors">
+                        Neuro-Allianz <span class="text-amber-400">MV</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Menü -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#problem" class="nav-link text-base font-medium text-gray-200 hover:text-amber-400 transition-colors">Das Problem</a>
+                    <a href="#solution" class="nav-link text-base font-medium text-gray-200 hover:text-amber-400 transition-colors">Unsere Lösung</a>
+                    <a href="#about" class="nav-link text-base font-medium text-gray-200 hover:text-amber-400 transition-colors">Über Uns</a>
+                    <a href="#join" class="bg-slate-900 hover:bg-slate-800 text-white px-6 py-2.5 rounded font-bold transition-transform transform hover:scale-105 shadow-lg">
+                        Jetzt handeln
+                    </a>
+                </div>
+
+                <!-- Handy Menü Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="p-2 rounded-md focus:outline-none text-white nav-text-target">
+                        <i data-lucide="menu" width="28" height="28" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Handy Menü (Ausklappbar) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white absolute w-full border-b shadow-xl top-full left-0">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#problem" class="mobile-link block px-3 py-4 text-brand-dark font-bold text-lg border-b border-gray-100 hover:bg-gray-50">Das Problem</a>
+                <a href="#solution" class="mobile-link block px-3 py-4 text-brand-dark font-bold text-lg border-b border-gray-100 hover:bg-gray-50">Unsere Lösung</a>
+                <a href="#about" class="mobile-link block px-3 py-4 text-brand-dark font-bold text-lg border-b border-gray-100 hover:bg-gray-50">Über Uns</a>
+                <a href="#join" class="mobile-link block w-full text-center mt-4 bg-slate-900 text-white px-3 py-4 rounded font-bold text-lg">Jetzt handeln</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Startbildschirm) -->
+    <section class="relative h-screen flex items-center overflow-hidden">
+        <!-- Hintergrundbild mit Abdunklung -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://picsum.photos/id/1018/1920/1080" alt="Küste MV" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-slate-900/80"></div>
+        </div>
+
+        <!-- Inhalt -->
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+            <div class="max-w-4xl">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-extrabold leading-[1.1] mb-8 drop-shadow-lg">
+                    <span class="text-white block mb-2">Ihr Kind passt nicht ins System?</span>
+                    <span class="text-amber-400 block">Dann ändern wir das System.</span>
+                </h1>
+                
+                <p class="text-lg sm:text-xl md:text-2xl text-gray-200 mb-12 font-light max-w-3xl leading-relaxed">
+                    Für eine echte Inklusion von Kindern mit Autismus und ADHS in Mecklenburg-Vorpommern. Gegen Ignoranz und Bürokratie. Für Bildung, die niemanden zurücklässt.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#join" class="group bg-amber-400 hover:bg-amber-500 text-slate-900 text-lg px-8 py-4 rounded-lg font-bold transition-all duration-300 shadow-lg flex items-center justify-center gap-2">
+                        Stimme erheben
+                        <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#about" class="bg-transparent border border-slate-500 hover:border-white text-white text-lg px-8 py-4 rounded-lg font-medium transition-all hover:bg-white/5 flex items-center justify-center">
+                        Unsere Geschichte
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM SECTION -->
+    <section id="problem" class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-dark mb-6">
+                    Die Realität in Mecklenburg-Vorpommern
+                </h2>
+                <p class="max-w-3xl mx-auto text-xl text-slate-600 leading-relaxed">
+                    Wir lieben unsere Kinder. Aber wir kämpfen täglich gegen Windmühlen. So sieht der Alltag für viele Familien mit neurodivergenten Kindern aus:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Karte 1 -->
+                <div class="flex flex-col items-start text-left p-8 rounded-xl bg-white border-t-4 border-rose-500 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-rose-50 mb-6">
+                        <i data-lucide="school" class="w-8 h-8 text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">Systemversagen Schule</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Teilzeitunterricht statt Inklusion. Suspendierungen statt pädagogischer Lösungen. Unsere Kinder werden oft als „unbeschulbar“ abgestempelt, weil das System zu starr für ihre Bedürfnisse ist.
+                    </p>
+                </div>
+
+                <!-- Karte 2 -->
+                <div class="flex flex-col items-start text-left p-8 rounded-xl bg-white border-t-4 border-rose-500 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-rose-50 mb-6">
+                         <i data-lucide="message-square-warning" class="w-8 h-8 text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">Das Eltern-Bashing</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        „Sie müssen nur konsequenter sein.“ Statt Unterstützung erhalten Eltern Vorwürfe. Die Schuld für neurobiologische Besonderheiten wird bei der Erziehung gesucht, während Hilferufe ignoriert werden.
+                    </p>
+                </div>
+
+                <!-- Karte 3 -->
+                <div class="flex flex-col items-start text-left p-8 rounded-xl bg-white border-t-4 border-rose-500 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 rounded-full bg-rose-50 mb-6">
+                         <i data-lucide="copy" class="w-8 h-8 text-rose-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-brand-dark mb-4">Das Bürokratiemonster</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Ein entwürdigender Kampf um Schulbegleiter und Nachteilsausgleiche. Monatelanges Warten auf Bescheide, während das Kind zu Hause leidet und die Eltern am Rande des Burnouts stehen.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LÖSUNG SECTION -->
+    <section id="solution" class="py-20 bg-brand-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header -->
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-4 leading-tight">
+                    <span class="text-white">Unsere Forderungen: </span>
+                    <span class="text-amber-400">Klar. Machbar. Notwendig.</span>
+                </h2>
+                <p class="text-gray-300 text-lg md:text-xl max-w-3xl leading-relaxed">
+                    Wir fordern keine Sonderbehandlung, sondern Chancengleichheit. Ein inklusives MV ist möglich, wenn der politische Wille da ist.
+                </p>
+            </div>
+
+            <!-- Forderungen Liste -->
+            <div class="flex flex-col gap-6">
+                <!-- Punkt 1 -->
+                <div class="flex flex-col md:flex-row gap-6 bg-slate-800/40 border border-slate-700 p-6 md:p-8 rounded-xl items-start transition-colors hover:border-slate-600 hover:bg-slate-800/60">
+                    <div class="flex-shrink-0 bg-amber-400 p-3 rounded-lg">
+                         <i data-lucide="book-open" class="w-6 h-6 text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Neuro-Kompetenz in jede Schule</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Verpflichtende Fortbildungen zu Autismus und ADHS für alle Lehrkräfte und Erzieher. Weg vom „Störfaktor“-Denken hin zu pädagogischem Verständnis für Neurodivergenz.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Punkt 2 -->
+                <div class="flex flex-col md:flex-row gap-6 bg-slate-800/40 border border-slate-700 p-6 md:p-8 rounded-xl items-start transition-colors hover:border-slate-600 hover:bg-slate-800/60">
+                    <div class="flex-shrink-0 bg-amber-400 p-3 rounded-lg">
+                         <i data-lucide="layout" class="w-6 h-6 text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Flexible Lernorte statt Einheitsbrei</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Schulen brauchen Rückzugsräume und flexible Konzepte. Ein Kind im Overload kann nicht lernen. Wir fordern bauliche und strukturelle Anpassungen, die Reizüberflutung reduzieren.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Punkt 3 -->
+                <div class="flex flex-col md:flex-row gap-6 bg-slate-800/40 border border-slate-700 p-6 md:p-8 rounded-xl items-start transition-colors hover:border-slate-600 hover:bg-slate-800/60">
+                    <div class="flex-shrink-0 bg-amber-400 p-3 rounded-lg">
+                         <i data-lucide="shield-check" class="w-6 h-6 text-slate-900"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-2">Unabhängige Ombudsstelle</h3>
+                        <p class="text-slate-300 leading-relaxed">
+                            Eine neutrale Instanz mit Entscheidungsgewalt, an die sich Eltern wenden können, wenn Schulen die Inklusion verweigern oder Schulbegleitung willkürlich gekürzt wird.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÜBER UNS SECTION -->
+    <section id="about" class="py-24 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                
+                <!-- Text Content -->
+                <div class="lg:w-1/2 order-2 lg:order-1">
+                    <h2 class="text-3xl font-extrabold text-brand-dark sm:text-4xl mb-6">
+                        Ich bin Vater, kein Bittsteller.
+                    </h2>
+                    <div class="prose prose-lg text-gray-600">
+                        <p class="mb-4">
+                            Als mein Sohn die Diagnose Autismus erhielt, dachte ich, wir bekommen Hilfe. Stattdessen bekamen wir Papierkram, Ablehnung und das Gefühl, dass unser Kind im Bildungssystem von MV "stört".
+                        </p>
+                        <p class="mb-4">
+                            Ich habe Stunden in Wartezimmern verbracht und Nächte damit, Widersprüche gegen Behördenentscheidungen zu schreiben. Ich sah, wie mein intelligenter, fröhlicher Junge seine Lebensfreude verlor, weil er nicht in das starre Raster passte.
+                        </p>
+                        <p class="mb-4">
+                            <strong class="font-bold text-slate-900">Damit ist jetzt Schluss.</strong> Ich habe die Neuro-Allianz gegründet, weil ich weiß, dass wir viele sind. Tausende Familien in Mecklenburg-Vorpommern erleben dasselbe. Wenn wir uns vernetzen, können sie uns nicht länger ignorieren.
+                        </p>
+                        <p class="mb-4">
+                            <strong class="font-bold text-slate-900">Wir verwandeln unsere Erschöpfung in politische Schlagkraft.</strong>
+                        </p>
+                        <p class="mb-4">
+                            Raik Lasner, Gründer der Initiative
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bild -->
+                <div class="lg:w-1/2 order-1 lg:order-2">
+                    <div class="relative">
+                        <!-- Gelber Rahmen -->
+                        <div class="absolute -inset-4 bg-amber-400 rounded-xl transform rotate-3"></div>
+                        <div class="relative">
+                             <img src="https://picsum.photos/600/800?grayscale" alt="Vater und Kind" class="relative rounded-xl shadow-2xl w-full h-96 object-cover grayscale" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / FOOTER NEWSLETTER -->
+    <section id="join" class="py-24 bg-[#eab308] text-brand-dark relative">
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-slate-900">
+                Lassen Sie uns nicht länger leise sein.
+            </h2>
+            
+            <div class="max-w-2xl mx-auto mb-10">
+                <p class="text-lg md:text-xl text-slate-800 mb-4 leading-relaxed">
+                    Die Politik reagiert nur auf Druck. Wir brauchen Zahlen. Wir brauchen Sie. Tragen Sie sich ein, um über Aktionen, Treffen und Fortschritte informiert zu werden.
+                </p>
+                <p class="text-lg md:text-xl font-bold text-slate-900">
+                    Gemeinsam sind wir eine Wählermacht.
+                </p>
+            </div>
+
+            <!-- Formular Container -->
+            <div class="max-w-xl mx-auto">
+                <!-- Erfolgsmeldung (standardmäßig ausgeblendet) -->
+                <div id="success-message" class="hidden bg-white rounded-2xl p-8 shadow-2xl text-center animate-fade-in">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-2">Vielen Dank!</h3>
+                    <p class="text-slate-600">Wir haben Ihre Anmeldung erhalten.</p>
+                    <button onclick="resetForm()" class="mt-6 text-slate-900 font-medium hover:underline">
+                        Zurück
+                    </button>
+                </div>
+
+                <!-- Eingabeformular -->
+                <div id="signup-form-container" class="bg-white p-2 rounded-xl shadow-2xl">
+                    <form id="newsletter-form" onsubmit="submitForm(event)" class="flex flex-col sm:flex-row gap-2">
+                        <div class="flex-grow relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i data-lucide="mail" class="h-5 w-5 text-slate-400"></i>
+                            </div>
+                            <input
+                                type="email"
+                                required
+                                placeholder="Ihre E-Mail-Adresse"
+                                class="w-full pl-11 pr-4 py-3 bg-white text-slate-900 rounded-lg border-2 border-slate-200 focus:outline-none focus:border-slate-400 focus:ring-0 font-medium placeholder-slate-400 h-full transition-colors"
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all whitespace-nowrap h-14 sm:h-auto"
+                        >
+                            Jetzt dabei sein
+                        </button>
+                    </form>
+                </div>
+                <p id="spam-notice" class="mt-6 text-sm text-slate-800/80">
+                    Kein Spam. Nur relevante Infos zur Initiative. Abmeldung jederzeit möglich.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark text-gray-400 py-6 text-center text-sm">
+        <p>&copy; <span id="year"></span> Neuro-Allianz Mecklenburg-Vorpommern. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <!-- JAVASCRIPT FÜR INTERAKTIVITÄT -->
+    <script>
+        // 1. Icons Initialisieren
+        lucide.createIcons();
+
+        // 2. Aktuelles Jahr im Footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 3. Mobile Menü Steuerung
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-icon');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            // Icon ändern (optional, aber nett) - da wir Lucide Icons neu rendern müssten, lassen wir es hier simpel
+        });
+
+        // Menü schließen wenn Link geklickt wird
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // 4. Navbar Scroll Effekt
+        const navbar = document.getElementById('navbar');
+        const navTextTargets = document.querySelectorAll('.nav-text-target');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-2');
+                navbar.classList.remove('bg-transparent', 'py-4');
+                
+                // Textfarben anpassen für weißen Hintergrund
+                navTextTargets.forEach(el => {
+                    el.classList.remove('text-white', 'text-amber-400');
+                    el.classList.add('text-brand-dark');
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('text-gray-200');
+                    link.classList.add('text-slate-600');
+                });
+            } else {
+                navbar.classList.remove('bg-white/95', 'backdrop-blur-sm', 'shadow-md', 'py-2');
+                navbar.classList.add('bg-transparent', 'py-4');
+
+                // Textfarben zurücksetzen
+                navTextTargets.forEach(el => {
+                    el.classList.add(el.tagName === 'SPAN' ? 'text-white' : 'text-white'); // Vereinfacht
+                    if(el.parentElement.classList.contains('text-amber-400')) {
+                        // Icon wrapper specific logic handled by keeping base class
+                    }
+                });
+                // Hard reset classes to ensure correctness based on original design logic
+                const logoIcon = document.querySelector('.flex.items-center.gap-2 > div');
+                const logoText = document.querySelector('.flex.items-center.gap-2 > span');
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                
+                logoIcon.classList.remove('text-brand-dark');
+                logoIcon.classList.add('text-amber-400');
+                
+                logoText.classList.remove('text-brand-dark');
+                logoText.classList.add('text-white');
+
+                menuBtn.classList.remove('text-brand-dark');
+                menuBtn.classList.add('text-white');
+
+                navLinks.forEach(link => {
+                    link.classList.add('text-gray-200');
+                    link.classList.remove('text-slate-600');
+                });
+            }
+        });
+
+        // 5. Formular Simulieren
+        function submitForm(e) {
+            e.preventDefault();
+            const formContainer = document.getElementById('signup-form-container');
+            const successMsg = document.getElementById('success-message');
+            const spamNotice = document.getElementById('spam-notice');
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerText;
+
+            // Ladeanimation
+            btn.innerText = "...";
+            btn.disabled = true;
+
+            setTimeout(() => {
+                formContainer.classList.add('hidden');
+                spamNotice.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+                
+                // Reset button
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }, 1000);
+        }
+
+        function resetForm() {
+            const formContainer = document.getElementById('signup-form-container');
+            const successMsg = document.getElementById('success-message');
+            const spamNotice = document.getElementById('spam-notice');
+            const form = document.getElementById('newsletter-form');
+
+            successMsg.classList.add('hidden');
+            formContainer.classList.remove('hidden');
+            spamNotice.classList.remove('hidden');
+            form.reset();
+        }
+    </script>
+</body>
 </html>
